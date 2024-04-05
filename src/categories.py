@@ -1,4 +1,7 @@
 class Category:
+    name: str
+    description: str
+    goods: list
 
     quantity_category = 0
     quantity_sku = 0
