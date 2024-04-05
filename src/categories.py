@@ -7,3 +7,8 @@ class Category:
         self.name = name
         self.description = description
         self.goods = goods
+
+        Category.quantity_category += 1
+        Category.quantity_sku += len(goods)
+
+
