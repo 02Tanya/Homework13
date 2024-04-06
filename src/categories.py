@@ -21,11 +21,9 @@ class Category:
             continue
         Category.quantity_sku += len(goods_set)
 
-Bakery = Category('Bakery', 'tasty', ('candy', 'cake', 'cookie', 'biscuit', 'cake'))
-Beverages = Category('Beverages', 'nice', ('wine', 'juice', 'water', 'beer', 'wine'))
-Confectionary = Category('Confectionary', 'sweet', ('candy', 'beer', 'chocolat', 'cookie', 'cake'))
 
-print(Category.quantity_category)
-print(Category.quantity_sku)
+
+
+
 
 
