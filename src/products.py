@@ -4,6 +4,7 @@ class Product:
     price: float
     quantity: int
 
+
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
@@ -16,14 +17,15 @@ class Product:
         return cls(name, description, price, quantity)
 
 
-
-
     @property
     def price(self):
+        """Цена задается как свойство"""
         return self.__price
+
 
     @price.setter
     def price(self, new_price):
+        """Информирование о том, что цена не удовлетворяет указанным параметрам"""
         if new_price <= 0:
             print('Введена некорректная цена!')
         else:
