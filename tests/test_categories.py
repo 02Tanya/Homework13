@@ -17,3 +17,6 @@ def test_init(category_beverages):
     assert category_beverages.goods == products_list
     assert Category.quantity_category == 1
     assert Category.quantity_sku == 3
+    assert category_beverages.print_good == 'Sombrero, 110 руб. Остаток: 1000\nTango, 500 руб. Остаток: 350\nWaltz, 80 руб. Остаток: 100\n'
+
+

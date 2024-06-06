@@ -25,12 +25,15 @@ class Category:
         self.__goods.append(value)
         Category.quantity_sku += 1
 
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {len(self)} шт."
+
     @property
     def goods(self):
         return self.__goods
 
     @property
-    def list_goods(self):
+    def print_good(self):
         output = ''
         for good in self.__goods:
             output += f'{good.name}, {good.price} руб. Остаток: {good.quantity}\n'
