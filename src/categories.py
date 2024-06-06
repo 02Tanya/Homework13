@@ -9,18 +9,17 @@ class Category:
     def __init__(self, name, description, goods):
         self.name = name
         self.description = description
-        self.goods = goods
+        self.__goods = goods
 
 
         Category.quantity_category += 1
 
         goods_set = []
-        for good in self.goods:
+        for good in self.__goods:
             if good not in goods_set:
                 goods_set.append(good)
             continue
         Category.quantity_sku += len(goods_set)
-
 
 
 
