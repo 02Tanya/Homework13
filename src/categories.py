@@ -21,7 +21,9 @@ class Category:
             continue
         Category.quantity_sku += len(goods_set)
 
-
+    def add_goods(self, value):
+        self.__goods.append(value)
+        Category.quantity_sku += 1
 
 
 
