@@ -10,3 +10,7 @@ class Product:
         self.price = price
         self.quantity = quantity
 
+
+    @classmethod
+    def creat_product(cls, name, description, price, quantity):
+        return cls(name, description, price, quantity)
