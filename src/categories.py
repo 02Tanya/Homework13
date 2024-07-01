@@ -40,4 +40,7 @@ class Category:
 
     def __len__(self):
         """Для вывода количества товаров на складе"""
-        return len(self.__goods)
+        quantity = 0
+        for good in self.__goods:
+            quantity += good.quantity
+        return quantity
