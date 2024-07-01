@@ -6,13 +6,10 @@ class Category:
     quantity_category = 0
     quantity_sku = 0
 
-
     def __init__(self, name, description, goods):
         self.name = name
         self.description = description
         self.__goods = goods
-
-
         Category.quantity_category += 1
 
         goods_set = []
@@ -22,27 +19,25 @@ class Category:
             continue
         Category.quantity_sku += len(goods_set)
 
-
     def add_goods(self, value):
         self.__goods.append(value)
         Category.quantity_sku += 1
-
-
-    def __str__(self):
-        return f"{self.name}, количество продуктов: {len(self)} шт."
-
 
     @property
     def goods(self):
         return self.__goods
 
-
     @property
     def print_good(self):
-        """декоратор для вывода информации о товаре в формате цена/ остаток"""
+        """Декоратор для вывода информации о товаре в формате цена/ остаток"""
         output = ''
         for good in self.__goods:
             output += f'{good.name}, {good.price} руб. Остаток: {good.quantity}\n'
         return output
 
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {len(self)} шт."
 
+    def __len__(self):
+        """Для вывода количества товаров на складе"""
+        return len(self.__goods)
