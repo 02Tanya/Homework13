@@ -4,7 +4,7 @@ class Product:
     price: float
     quantity: int
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity, colour=None):
         self.name = name
         self.description = description
         self.price = price
@@ -36,3 +36,20 @@ class Product:
             return (self.price * self.quantity) + (other.price * other.quantity)
         else:
             raise TypeError
+
+class Smartphone(Product):
+    """Создание дочернего класса от класса Product со сл.атрибутами:
+    productivity - производительность
+    model - модель
+    inbuilt_memory - объем встроенной памяти
+    colour - в родительском классе"""
+    def __init__(self, name, description, price, quantity, productivity, model, inbuilt_memory,
+                 colour):
+        super().__init__(name, description, price, quantity, colour)
+        self.productivity = productivity
+        self.model = model
+        self.inbuilt_memory = inbuilt_memory
+        self.colour = colour
+
+
+
