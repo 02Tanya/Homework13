@@ -1,14 +1,37 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class AbstractProduct(ABC):
+    """Создание абстрактного класса для класса Product и его наследников
+    """
+    @abstractmethod
+    def __init__(self, name, description, price, quantity):
+        self.name = name
+        self.description = description
+        self.price = price
+        self.quantity = quantity
+
+
+class Mixin:
+    """Миксин для вывода информации о том, что был создан объект
+    """
+
+    def __init__(self):
+        print(repr(self))
+
+    def __repr__(self):
+        return f"Создание нового экземпляра продукта - {self.__class__.__name__} ({self.__dict__.items()})"
+
+
+class Product(AbstractProduct, Mixin):
     name: str
     description: str
     price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity, colour=None):
-        self.name = name
-        self.description = description
-        self.price = price
-        self.quantity = quantity
+        super().__init__(name, description, price, quantity)
+        super().__repr__()
         self.colour = colour
 
     @classmethod
@@ -33,7 +56,7 @@ class Product:
 
     def __add__(self, other):
         """Обновленный метод сложения для определения итоговой стоимости запасов"""
-        if self.__class__.__name__ == other.__class__.__name__:
+        if type(self) == type(other):
             return (self.price * self.quantity) + (other.price * other.quantity)
         else:
             raise TypeError
@@ -63,3 +86,6 @@ class LawnGrass(Product):
         self.country_of_origin = country_of_origin
         self.germination_period = germination_term
 
+
+test_product = Product('food', 'very good', 10, 100)
+print(repr(test_product))
