@@ -12,6 +12,17 @@ class AbstractProduct(ABC):
         self.quantity = quantity
 
 
+class Mixin:
+    """Миксин для вывода информации о том, что был создан объект
+    """
+
+    def __init__(self):
+        print(repr(self))
+
+    def __repr__(self):
+        return f"Создание нового экземпляра продукта - {self.__class__.__name__} ({self.__dict__.items()})"
+
+
 class Product(AbstractProduct, Mixin):
     name: str
     description: str
@@ -20,6 +31,7 @@ class Product(AbstractProduct, Mixin):
 
     def __init__(self, name, description, price, quantity, colour=None):
         super().__init__(name, description, price, quantity)
+        super().__repr__()
         self.colour = colour
 
     @classmethod
@@ -38,9 +50,6 @@ class Product(AbstractProduct, Mixin):
             print('Введена некорректная цена!')
         else:
             self.__price = new_price
-
-    def __repr__(self):
-        super().__repr__()
 
     def __str__(self):
         return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
@@ -78,5 +87,5 @@ class LawnGrass(Product):
         self.germination_period = germination_term
 
 
-prod = Product('fg', 'dfsf', 10, 100)
-print(prod)
+test_product = Product('food', 'very good', 10, 100)
+print(repr(test_product))
