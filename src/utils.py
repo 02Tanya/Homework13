@@ -37,5 +37,6 @@ def load_products():
 
     return set_of_products
 
+
 print(load_categories())
 print(load_products())
