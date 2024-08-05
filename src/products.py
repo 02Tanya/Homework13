@@ -9,6 +9,7 @@ class Product:
         self.description = description
         self.price = price
         self.quantity = quantity
+        self.colour = colour
 
     @classmethod
     def create_product(cls, name, description, price, quantity):
@@ -37,6 +38,7 @@ class Product:
         else:
             raise TypeError
 
+
 class Smartphone(Product):
     """Создание дочернего класса от класса Product со сл.атрибутами:
     productivity - производительность
@@ -49,7 +51,15 @@ class Smartphone(Product):
         self.productivity = productivity
         self.model = model
         self.inbuilt_memory = inbuilt_memory
-        self.colour = colour
 
 
+class LawnGrass(Product):
+    """Создание дочернего класса от класса Product со сл.атрибутами:
+    country_of_origin - страна производитель
+    germination_term - срок прорастания
+    colour - в родительском классе"""
+    def __init__(self, name, description, price, quantity, country_of_origin, germination_term, colour):
+        super().__init__(name, description, price, quantity, colour)
+        self.country_of_origin = country_of_origin
+        self.germination_period = germination_term
 
