@@ -21,7 +21,7 @@ class Category:
 
     def add_goods(self, value):
 
-        if not isinstance(value, (Product, Smartphone, LawnGrass)):  # проверка соответствия классу
+        if not isinstance(value, (Product):  # проверка соответствия классу
             raise TypeError('Продукт не соответствует классу')
         self.__goods.append(value)
         Category.quantity_sku += 1
@@ -84,7 +84,7 @@ class Product:
 
     def __add__(self, other):
         """Обновленный метод сложения для определения итоговой стоимости запасов"""
-        if self.__class__.__name__ == other.__class__.__name__:
+        if type(self) == type(other):
             return (self.price * self.quantity) + (other.price * other.quantity)
         else:
             raise TypeError
