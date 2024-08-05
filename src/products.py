@@ -32,7 +32,7 @@ class Product:
         return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
 
     def __add__(self, other):
-        """Метод сложения для определения итоговой стоимости запасов"""
+        """Обновленный метод сложения для определения итоговой стоимости запасов"""
         if self.__class__.__name__ == other.__class__.__name__:
             return (self.price * self.quantity) + (other.price * other.quantity)
         else:
