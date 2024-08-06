@@ -36,7 +36,8 @@ class Category:
 
     @property
     def print_good(self):
-        """Декоратор для вывода информации о товаре в формате цена/ остаток"""
+        """Декоратор для вывода информации о товаре в формате цена/ остаток
+        """
         output = ''
         for good in self.__goods:
             output += f'{good.name}, {good.price} руб. Остаток: {good.quantity}\n'
@@ -46,8 +47,22 @@ class Category:
         return f"{self.name}, количество продуктов: {len(self)} шт."
 
     def __len__(self):
-        """Для вывода количества товаров на складе"""
+        """Для вывода количества товаров на складе
+        """
         quantity = 0
         for good in self.__goods:
             quantity += good.quantity
         return quantity
+
+    def get_average_price(self):
+        """Метод для подсчета средней цены всех товаров.
+        Если товаров в категории нет - возвращает 0
+        """
+        try:
+            prices_sum = 0
+            for good in self.__goods:
+                prices_sum += good.price
+            average_price = prices_sum / len(self.__goods)
+            return average_price
+        except ZeroDivisionError:
+            return 0
