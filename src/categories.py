@@ -26,8 +26,9 @@ class Category:
 
         if not isinstance(value, Product):  # проверка соответствия классу
             raise TypeError('Продукт не соответствует классу')
+        elif value.quantity == 0:   # проверка наличия у товара остатков
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.__goods.append(value)
-        Category.quantity_sku += 1
 
     @property
     def goods(self):
